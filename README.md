@@ -1,5 +1,7 @@
 # bling
 
+部分数据请求来源于开课吧api接口(axios),如有不妥之处,请及时告知
+
 ## Project setup
 ```
 npm install
