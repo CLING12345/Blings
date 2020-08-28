@@ -9,7 +9,7 @@
                     <p class="ellipsis">{{item.courseName}}</p>
                     <p class="ellipsis">{{item.courseDescribe}}</p>
                     <p>
-                        <span></span>
+                        <span class="teach-name" :style="{background:'url('+item.teacherImageUrl+') no-repeat center center'}"></span>
                         <span>{{item.teacherName}}</span>
                         <button>立即报名</button>
                     </p>
@@ -27,7 +27,7 @@ export default {
         return{
             courses: [],
             loading: true,
-            isShow: false
+            isShow: false,
         }
     },
     mounted(){
@@ -56,6 +56,16 @@ export default {
 }
 </script>>
 <style scoped>
+    .teach-name{
+        height: 1.5625rem;
+        width: 1.5625rem;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        vertical-align: middle !important;
+        display: inline-block;
+        background-size: cover !important;
+        border: 1px solid #f5f5f5;
+    } 
     .pastList{
         padding-bottom: 50px;
     }
