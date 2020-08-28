@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ul class="pastList">
+        <ul class="pastList" v-if="isShow">
             <li class="list" v-for="(item, index)  in courses" :key="index"> 
                 <div class="list-left">
                     <img :src="item.coverUrl[0].url" />
@@ -16,18 +16,26 @@
                 </div>
             </li>
         </ul>
+        <van-skeleton title :row="19" :loading="loading" />
     </section>
 </template>
 <script>
 import  serive from '../../api/request'
+import { Skeleton } from 'vant';  
 export default {
     data(){
         return{
-            courses: []
+            courses: [],
+            loading: true,
+            isShow: false
         }
     },
     mounted(){
         this.getCourses(); 
+        setTimeout(()=>{
+            this.loading = false;
+            this.isShow = true;
+        },1000);
     },
     methods:{
         getCourses(){
@@ -41,6 +49,9 @@ export default {
                 console.log(error);
             });
         },
+    },
+    components:{
+         [Skeleton.name]: Skeleton
     }
 }
 </script>>
@@ -85,15 +96,14 @@ export default {
         position: absolute;
         left: 0;
         bottom: 0;
+        width: 100%;
     }
     .list-right p:nth-of-type(3) span:nth-of-type(2){
         font-size: 12px;
     }
     .list-right p:nth-of-type(3) button{
+        float: right;
         font-size: 12px;
-        position: absolute;
-        right: -130px;
-        top: -10px;
         width: 2.5rem;
         padding: 5px 5px;
         border-radius: 15px;

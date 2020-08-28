@@ -39,7 +39,7 @@
             <!--学科 -->
             <h1 class="banner-2">学科</h1>
         </section>
-        <van-skeleton title :row="3" :loading="loading" />
+        <van-skeleton title :row="19" :loading="loading" />
     </div>
     
 </template>
